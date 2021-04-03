@@ -1,8 +1,8 @@
 package boot
 
 import (
-	"TwitchHub/routes"
-	"TwitchHub/utils"
+	"github.com/rootiens/TwitchHub-Go/routes"
+	"github.com/rootiens/TwitchHub-Go/utils"
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
 

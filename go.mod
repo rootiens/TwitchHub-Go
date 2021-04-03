@@ -1,4 +1,4 @@
-module TwitchHub
+module github.com/rootiens/TwitchHub-Go
 
 go 1.16
 

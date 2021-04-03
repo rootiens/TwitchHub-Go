@@ -1,7 +1,7 @@
 package services
 
 import (
-	"TwitchHub/models"
+	"github.com/rootiens/TwitchHub-Go/models"
 
 	validation "github.com/go-ozzo/ozzo-validation"
 )

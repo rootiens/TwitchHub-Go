@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"TwitchHub/models"
-	"TwitchHub/services"
+	"github.com/rootiens/TwitchHub-Go/models"
+	"github.com/rootiens/TwitchHub-Go/services"
 
 	// "log"
 

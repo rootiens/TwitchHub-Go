@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"TwitchHub/controllers"
+	"github.com/rootiens/TwitchHub-Go/controllers"
 
 	"github.com/gofiber/fiber/v2"
 )

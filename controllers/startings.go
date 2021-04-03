@@ -1,9 +1,9 @@
 package controllers
 
 import (
-	"TwitchHub/utils"
+	"github.com/rootiens/TwitchHub-Go/utils"
 
-	"TwitchHub/models"
+	"github.com/rootiens/TwitchHub-Go/models"
 
 	"github.com/gofiber/fiber/v2"
 )

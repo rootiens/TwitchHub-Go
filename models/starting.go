@@ -1,7 +1,7 @@
 package models
 
 import (
-	"TwitchHub/utils"
+	"github.com/rootiens/TwitchHub-Go/utils"
 
 	"github.com/gofiber/fiber/v2"
 	"gorm.io/gorm"
