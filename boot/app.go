@@ -1,8 +1,8 @@
 package boot
 
 import (
-	"github.com/rootiens/TwitchHub-Go/routes"
-	"github.com/rootiens/TwitchHub-Go/utils"
+	"TwitchHub/routes"
+	"TwitchHub/utils"
 
 	"github.com/gofiber/fiber/v2/middleware/cors"
 
@@ -18,7 +18,7 @@ func BootApp() *fiber.App {
 	app := fiber.New()
 
 	api := app.Group("/api", cors.New())
-	// startings.StartingRoutes(api)
+	routes.StartingRoutes(api)
 	routes.LiteratureRoutes(api)
 
 	return app

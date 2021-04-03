@@ -9,10 +9,3 @@ func ParseBody(ctx *fiber.Ctx, body interface{}) *fiber.Error {
 
 	return nil
 }
-
-func ParseBodyAndValidate(ctx *fiber.Ctx, body interface{}) *fiber.Error {
-	if err := ParseBody(ctx, body); err != nil {
-		return err
-	}
-	return Validate(body)
-}

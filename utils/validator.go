@@ -1,33 +1,55 @@
 package utils
 
-import (
-	"fmt"
-	"strings"
+// import "github.com/go-playground/validator"
 
-	"github.com/go-playground/validator/v10"
-	"github.com/gofiber/fiber/v2"
-)
+// "fmt"
+// "strings"
 
-var validate = validator.New()
+// "github.com/go-playground/validator/v10"
+// "github.com/gofiber/fiber/v2"
 
-// Validate validates the input struct
-func Validate(payload interface{}) *fiber.Error {
-	err := validate.Struct(payload)
+// var validate = validator.New()
 
-	if err != nil {
-		var errors []string
-		for _, err := range err.(validator.ValidationErrors) {
-			errors = append(
-				errors,
-				fmt.Sprintf("`%v` with value `%v` doesn't satisfy the `%v` constraint", err.Field(), err.Value(), err.Tag()),
-			)
-		}
+// type ErrorResponse struct {
+// 	FailedField string
+// 	Tag         string
+// 	Value       string
+// }
 
-		return &fiber.Error{
-			Code:    fiber.StatusBadRequest,
-			Message: strings.Join(errors, ","),
-		}
-	}
+// func Validate(payload interface{}) []*ErrorResponse {
+// 	var errors []*ErrorResponse
+// 	validate := validator.New()
+// 	err := validate.Struct(payload)
+// 	if err != nil {
+// 		for _, err := range err.(validator.ValidationErrors) {
+// 			var element ErrorResponse
+// 			element.FailedField = err.StructNamespace()
+// 			element.Tag = err.Tag()
+// 			element.Value = err.Param()
+// 			errors = append(errors, &element)
+// 		}
+// 	}
+// 	return errors
+// }
 
-	return nil
-}
+// // Validate validates the input struct
+// func Validate(payload interface{}) *fiber.Error {
+// 	err := validate.Struct(payload)
+
+// 	if err != nil {
+// 		var errors []string
+// 		for _, err := range err.(validator.ValidationErrors) {
+// 			errors = append(
+// 				errors,
+// 				fmt.Sprintf("`%v` with value `%v` doesn't satisfy the `%v` constraint", err.Field(), err.Value(), err.Tag()),
+// 			)
+// 		}
+
+// 		return &fiber.Error{
+// 			Code:    fiber.StatusBadRequest,
+// 			Message: strings.Join(errors, ","),
+// 		}
+// 	}
+
+// 	return nil
+// }

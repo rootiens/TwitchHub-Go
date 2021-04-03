@@ -1,15 +1,26 @@
 package services
 
+import (
+	"TwitchHub/models"
+
+	validation "github.com/go-ozzo/ozzo-validation"
+)
+
 type LiteratureResponse struct {
-	Title       string `json:"Title"`
-	Description string `json:"Description"`
+	Message string `json:"message"`
+	// Title       string `json:"title"`
+	// Description string `json:"description"`
+	Data models.Literature
 }
 
-type CreateLitPayload struct {
-	Title       string `json:"Title" validate:"required, min=3,max=150"`
-	Description string `json:"Description validate:"required"`
+type LiteraturePayload struct {
+	Title       string `validate="required,min=5,max=150`
+	Description string `validate="required,min=5,max=150`
 }
 
-type LiteratureCreateResponse struct {
-	Literature *LiteratureResponse `json:"Literature"`
+func (l LiteraturePayload) Validate() error {
+	return validation.ValidateStruct(&l,
+		validation.Field(&l.Title, validation.Required, validation.Length(5, 20)),
+		validation.Field(&l.Description, validation.Required, validation.Length(5, 50)),
+	)
 }

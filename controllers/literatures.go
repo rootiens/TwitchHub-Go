@@ -1,30 +1,52 @@
 package controllers
 
 import (
+	"TwitchHub/models"
+	"TwitchHub/services"
+
+	// "log"
+
 	"github.com/gofiber/fiber/v2"
-	"github.com/rootiens/TwitchHub-Go/models"
-	"github.com/rootiens/TwitchHub-Go/services"
-	// "github.com/rootiens/TwitchHub-Go/utils"
 )
 
-func CreateLiterature(c *fiber.Ctx) error {
-	b := new(services.CreateLitPayload)
+type LiteratureController struct {
+	model models.Literature
+}
 
-	c.BodyParser(b)
+func (l LiteratureController) Index(ctx *fiber.Ctx) error {
+	literatures := l.model.GetAll()
+	return ctx.JSON(literatures)
+}
 
-	d := &models.Literature{
+func (l LiteratureController) Create(ctx *fiber.Ctx) error {
+	b := new(services.LiteraturePayload)
+
+	if err := ctx.BodyParser(b); err != nil {
+		return err
+	}
+
+	validationErrors := b.Validate()
+
+	// log.Fatal(validationErrors)
+
+	if validationErrors != nil {
+		return ctx.JSON(validationErrors)
+	}
+
+	l.model = models.Literature{
 		Title:       b.Title,
 		Description: b.Description,
 	}
 
-	if err := models.CreateLiterature(d).Error; err != nil {
-		return fiber.NewError(fiber.StatusConflict, err.Error())
+	_, modelError := l.model.Create()
+
+	if modelError != nil {
+		fiber.NewError(fiber.StatusConflict, modelError.Error())
 	}
 
-	return c.JSON(&services.LiteratureCreateResponse{
-		Literature: &services.LiteratureResponse{
-			Title:       d.Title,
-			Description: d.Description,
-		},
+	return ctx.JSON(services.LiteratureResponse{
+		Message: "success",
+		Data:    l.model,
 	})
+
 }
