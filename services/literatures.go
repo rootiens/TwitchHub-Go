@@ -7,9 +7,9 @@ type LiteratureResponse struct {
 
 type CreateLitPayload struct {
 	Title       string `json:"Title" validate:"required, min=3,max=150"`
-	Description string `json:"Description"`
+	Description string `json:"Description validate:"required"`
 }
 
 type LiteratureCreateResponse struct {
-	Literature *[]LiteratureResponse `json:"Literature"`
+	Literature *LiteratureResponse `json:"Literature"`
 }

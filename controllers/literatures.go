@@ -4,15 +4,13 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/rootiens/TwitchHub-Go/models"
 	"github.com/rootiens/TwitchHub-Go/services"
-	"github.com/rootiens/TwitchHub-Go/utils"
+	// "github.com/rootiens/TwitchHub-Go/utils"
 )
 
 func CreateLiterature(c *fiber.Ctx) error {
 	b := new(services.CreateLitPayload)
 
-	if err := utils.ParseBodyAndValidate(c, b); err != nil {
-		return err
-	}
+	c.BodyParser(b)
 
 	d := &models.Literature{
 		Title:       b.Title,
