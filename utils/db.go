@@ -18,9 +18,9 @@ func DatabaseConnection() *gorm.DB {
 	)
 	db, err := gorm.Open(mysql.New(mysql.Config{
 		DriverName: "mysql",
-		DSN:        dsn, // data source name, refer https://github.com/go-sql-driver/mysql#dsn-data-source-name
+		DSN:        dsn,
 	}), &gorm.Config{})
-	// db, err := gorm.Open("mysql", dsn)
+
 	ErrorHandler(err, "database connection error")
 	return db
 }

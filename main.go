@@ -1,10 +1,11 @@
 package main
 
 import (
-	"TwitchHub/boot"
 	"fmt"
 	"log"
 	"os"
+
+	"github.com/rootiens/TwitchHub-Go/boot"
 )
 
 func main() {

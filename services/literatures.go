@@ -8,15 +8,14 @@ import (
 
 type LiteratureResponse struct {
 	Message string `json:"message"`
-	// Title       string `json:"title"`
-	// Description string `json:"description"`
-	Data models.Literature
+	Data    models.Literature
 }
 
 type LiteraturePayload struct {
 	Title       string `validate="required,min=5,max=150`
 	Description string `validate="required,min=5,max=150`
 }
+
 
 func (l LiteraturePayload) Validate() error {
 	return validation.ValidateStruct(&l,

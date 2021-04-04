@@ -1,6 +1,8 @@
 package models
 
 import (
+	"fmt"
+
 	"github.com/rootiens/TwitchHub-Go/utils"
 
 	"gorm.io/gorm"
@@ -12,19 +14,18 @@ type Literature struct {
 	Description string
 }
 
-func (l *Literature) GetAll() []Literature {
+func (l *Literature) GetAllLiteratures() []Literature {
 	var literatures []Literature
 
 	db := utils.DatabaseConnection()
 
-	// db.Raw("select * from literatures").Scan(&literatures)
 	db.Find(&literatures)
 
 	return literatures
 
 }
 
-func (l *Literature) Create() (int64, error) {
+func (l *Literature) CreateLiterature() (int64, error) {
 
 	db := utils.DatabaseConnection()
 
@@ -32,4 +33,13 @@ func (l *Literature) Create() (int64, error) {
 
 	return res.RowsAffected, res.Error
 
+}
+
+func (l *Literature) GetLiterature() Literature {
+	var literature Literature
+	fmt.Println(l)
+
+	db := utils.DatabaseConnection()
+	db.Where("id = ?", l).First(&literature)
+	return literature
 }

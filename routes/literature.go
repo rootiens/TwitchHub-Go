@@ -11,5 +11,6 @@ func LiteratureRoutes(app fiber.Router) {
 	literaturesController := &controllers.LiteratureController{}
 
 	route.Get("/", literaturesController.Index)
+	route.Get("/id/:ID", literaturesController.GetLiterature)
 	route.Post("/create", literaturesController.Create)
 }
